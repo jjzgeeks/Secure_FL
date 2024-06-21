@@ -7,7 +7,6 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, roc_auc_score, matthews_corrcoef
 
-
 # Split the dataset into non-IID subsets for devices
 def create_non_iid_datasets(X, y, num_devices):
     subsets_X = np.array_split(X, num_devices)
@@ -27,7 +26,6 @@ class NN(nn.Module):
         x = torch.sigmoid(self.fc3(x))
         return x
 
-
 # Training and evaluation functions
 def local_model_training(model, data, num_epochs, lr):
     model.train()
@@ -41,11 +39,9 @@ def local_model_training(model, data, num_epochs, lr):
             loss.backward()
             optimizer.step()
 
-
 def evaluate_model(model, data):
     model.eval()
-    y_true = []
-    y_pred = []
+    y_true, y_pred = [], []
     with torch.no_grad():
         for inputs, labels in data:
             outputs = model(inputs)
@@ -70,10 +66,6 @@ def poison_data(X, y, fraction=0.5):
     y_poisoned = y.clone()
     y_poisoned[poisoned_indices] = 1 - y_poisoned[poisoned_indices]  # Flip labels
     return X, y_poisoned
-
-
-
-
 
 # Implementing the trimmed mean aggregation
 def trimmed_mean_aggregation(updates, trim_ratio):
@@ -118,8 +110,6 @@ def FL(subsets_X, subsets_y, F, num_devices, num_rounds, num_epochs, num_attacke
 
     return global_model
 
-
-
 if __name__ == '__main__':
     pd.options.mode.chained_assignment = None  # default='warn'
     data = fetch_openml(data_id=1590, as_frame=True)
@@ -144,7 +134,6 @@ if __name__ == '__main__':
 
     subsets_X, subsets_y = create_non_iid_datasets(F, y, num_devices)
     global_model = FL(subsets_X, subsets_y, F, num_devices, num_rounds, num_epochs, num_attackers, trim_ratio)
-
 
     local_models = []
     for device in range(num_devices):
