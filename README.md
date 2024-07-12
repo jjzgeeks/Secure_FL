@@ -11,5 +11,5 @@ The codes above were implemented from scratch.
     ![The results of secure aggregation methods.](https://github.com/jjzgeeks/Secure_FL/blob/main/readme_pics/Secure_aggregation_results.png)
 
 
-- `FedAda.py`: This code successfully implements the Federated Learning Adaptive Aggregation (FedAda) algorithm. The key idea is as follows, the local  models of the devices in each round are aggregated by the server using a dynamic weighted approach based on local model test accuracy. Experiments show that FedAda can not only improve global model generalization and performance but also accelerate the convergence of the global model.
+- `FedAda.py`: This code successfully implements the Federated Learning Adaptive Aggregation (FedAda) algorithm. The key idea is as follows, the local  models of the devices in each round are aggregated by the server using a dynamic weighted approach based on local model test accuracy. Experiments show that FedAda can not only improve global model generalization and performance but also accelerate the convergence of the FL global model.
    ![FedAda vs FedAvg.](https://github.com/jjzgeeks/Secure_FL/blob/main/readme_pics/FedAda_vs_FedAvg.png)
