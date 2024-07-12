@@ -13,12 +13,10 @@ from sklearn.preprocessing import  LabelEncoder, StandardScaler
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, roc_auc_score, matthews_corrcoef
 from scipy.io import savemat
 
-
 seed = 42
 random.seed(seed)
 np.random.seed(seed)
 torch.manual_seed(seed)
-
 
 # Split the dataset into non-IID for devices
 def create_non_iid_poison_datasets(train_dataset, num_devices):
