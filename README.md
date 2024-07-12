@@ -10,6 +10,13 @@ The codes above were implemented from scratch.
 - `data_poisoning_FL.py`: 2 devices only hold label "0" intentionally modify the labels associated with training data points, i.e., They both modify 60% of the real training data with label "0" to label "1". The goal is to mislead the model during training, causing it to learn incorrect or biased associations. Byzantine-resilient secure aggregation methods, i.e., Trimmed-mean, Krum, Multi-Krum and Median, are implemented. The experimental results are as follows:
     ![The results of secure aggregation methods.](https://github.com/jjzgeeks/Secure_FL/blob/main/readme_pics/Secure_aggregation_results.png)
 
+| Aggregation methods | Precision | F1-socre | AUC | MCC |
+| :---: |:---: |:---: |:---: |:---: |
+| FedAvg | $0.233 \pm 0.001$ | $0.378 \pm 0.003$ |  $0.499 \pm 0.003$ |  $-0.005 \pm 0.015$ | 
+| Krum |  $0.008 \pm 0.043$ |  $0.013 \pm 0.069$ |   $0.50 \pm 0.0$ |   $0.0 \pm 0.0$ | 
+| Multi-Krum |  $0.314 \pm 0.179$ | $0.411 \pm 0.119$ | $0.548 \pm 0.106$ | $0.098 \pm 0.20$ |
+| Median |  $0.615 \pm 0.099$ | $0.634 \pm 0.073$ | $0.768 \pm 0.063$ |  $0.522 \pm 0.103$ |
+| Trimmed-mean | $0.466 \pm 0.075$ |  $0.614 \pm 0.068$ |  $0.787 \pm 0.074$ |  $0.494 \pm 0.120$ |
 
 - `FedAda.py`: This code successfully implements the Federated Learning Adaptive Aggregation (FedAda) algorithm. The key idea is as follows, the local  models of the devices in each round are aggregated by the server using a dynamic weighted approach based on local model test accuracy. Experiments show that FedAda can not only improve global model generalization and performance but also accelerate the convergence of the FL global model, as shown in the following figure. Note that this experiment does not involve adversary attacks.
   
